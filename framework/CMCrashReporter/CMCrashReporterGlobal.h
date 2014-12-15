@@ -11,27 +11,25 @@
 #import <Cocoa/Cocoa.h>
 
 
-@interface CMCrashReporterGlobal : NSObject
-{
-};
+@interface CMCrashReporterGlobal : NSObject {
+}
 
-+ (NSString *)appName;
-+ (NSString *)appUiName;
-+ (NSString *)appVersion;
++(NSString *)appName;
++(NSString *)appUiName;
++(NSString *)appVersion;
 
-+ (BOOL)isRunningLeopard;
-+ (BOOL)checkOnCrashes;
++(BOOL)checkOnCrashes;
 
-+ (NSString *)crashReportEmail;
-+ (NSString *)crashReportURL;
-+ (NSString *)osVersion;
++(NSString *)crashReportEmail;
++(NSString *)crashReportURL;
++(NSString *)osVersion;
 
-+ (int)numberOfMaximumReports;
++(int)numberOfMaximumReports;
 
-+ (void)setAppName:(NSString *)name;
-+ (void)setAppUiName:(NSString *)name;
-+ (void)setAppVersion:(NSString *)version;
-+ (void)setCrashReportEmail:(NSString *)emailTo;
-+ (void)setCrashReportURL:(NSString *)reportServerUrl;
++(void)setAppName:(NSString *)name;
++(void)setAppUiName:(NSString *)name;
++(void)setAppVersion:(NSString *)version;
++(void)setCrashReportEmail:(NSString *)emailTo;
++(void)setCrashReportURL:(NSString *)reportServerUrl;
 
 @end

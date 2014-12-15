@@ -9,133 +9,130 @@
 
 #import "CMCrashReporterWindow.h"
 
+static CMCrashReporterWindow *windowController;
+
 @implementation CMCrashReporterWindow
 
-+ (void)runCrashReporterWithPaths:(NSArray *)ar
-{
-	CMCrashReporterWindow *windowController = [[self alloc] init];
-	[windowController setPaths:ar];
++(void)runCrashReporterWithPaths:(NSArray *)paths {
+    if (!windowController) {
+        windowController = [[self alloc] init];
+    }
+	[windowController setPaths:paths];
 	[[windowController window] makeKeyAndOrderFront:nil];
 }
 
-#pragma mark Default methods
-
-- (id)init
-{
-	self = [super initWithWindowNibName:NSStringFromClass([self class])];
-	if (self) {
-    // something to do?
+#pragma mark - Default methods
+-(instancetype)init {
+	if ((self=[super initWithWindowNibName:NSStringFromClass([self class])])) {
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(windowWillClose:) name:NSWindowWillCloseNotification object:self];
 	}
 	return self;
 }
 
-- (NSArray *)paths {
-	return paths;
+-(void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NSWindowWillCloseNotification object:self];
+    [super dealloc];
 }
 
-- (void)setPaths:(NSArray *)ar
-{
-	[paths release];
-	[ar retain];
-	paths = ar;
+-(NSArray*)paths {
+	return mPaths;
 }
 
-- (void)windowDidLoad
+-(void)setPaths:(NSArray *)paths
 {
-    [includeRapport setState:1];
-    [includeRapport setHidden:YES];
-    
-    [[self window] setTitle:[NSString stringWithFormat:@"%@ - %@ (%@) ",@"CrashReport", [CMCrashReporterGlobal appUiName],[CMCrashReporterGlobal appVersion]]];
-
-    NSString *email = [CMCrashReporterGlobal crashReportEmail];
-    if (email!=NULL)
-        [mailaddress setStringValue:email];
+	[mPaths release];
+	[paths retain];
+	mPaths = paths;
 }
 
-- (void)removeCrashLog:(NSString *)path
-{
-  NSError *error = nil;
-  [[NSFileManager defaultManager] removeItemAtPath:path error:&error];
+-(void)removeCrashLog:(NSString*)path {
+    NSError *error = nil;
+    [[NSFileManager defaultManager] removeItemAtPath:path error:&error];
 }
 
-- (void)updateIgnoreCrashes
-{
+-(void)updateIgnoreCrashes {
 	NSUserDefaults *defaults = [[NSUserDefaultsController sharedUserDefaultsController] defaults];
 	[defaults setBool:[dontShowThis state] forKey:@"CMCrashReporterIgnoreCrashes"];
 }
 
-- (IBAction)submitData:(id)sender
-{
-    int i = 0;
-	BOOL failures = NO;
-    NSInteger max = MIN([CMCrashReporterGlobal numberOfMaximumReports],[paths count]);
-  	
-	if (max == 0) max = [paths count];
-	
-	for (i = 0; i < max; i++) {
-		if ([self submitFile:[paths objectAtIndex:i]]) {
-			// report succeed
-			// File will be removed on close
-		} else
-			failures = YES;
-	}
-	
-	NSAlert *alert = [[[NSAlert alloc] init] autorelease];
-	[alert addButtonWithTitle:@"OK"];
-	[alert setMessageText:[CMCrashReporterGlobal appName]];
-	[alert setAlertStyle:NSInformationalAlertStyle];
-	
-	if (!failures)
-		[alert setInformativeText:[NSString stringWithFormat:@"Thanks for helping us improve %@",[CMCrashReporterGlobal appName]]];
-	else
-		[alert setInformativeText:[NSString stringWithFormat:@"%@ was unable to send the crashlog.",[CMCrashReporterGlobal appName]]];
-		
-	[alert runModal];
-	[self close];
+#pragma mark - NSWindow callbacks
+- (void)windowDidLoad {
+    [includeRapport setState:1];
+    [includeRapport setHidden:YES];
+    
+    [[self window] setTitle:[NSString stringWithFormat:@"%@ - %@ (%@) ",@"CrashReport", [CMCrashReporterGlobal appUiName], [CMCrashReporterGlobal appVersion]]];
+    
+    NSString *email = [CMCrashReporterGlobal crashReportEmail];
+    if (email) {
+        [mailaddress setStringValue:email];
+    }
 }
 
-- (IBAction)dontReport:(id)sender
-{
-        [self close];
-}
-
-- (void)close {
-	[self updateIgnoreCrashes];
-	[self windowWillClose:nil];
-	[[self window] performClose:nil];
-}
-
-- (void)windowWillClose:(NSNotification *)notification
-{
-    /* Window need to close -- We remove all the reports -- */
-    unsigned int i = 0;
-	for (i = 0; i < [paths count]; i++) {
-		if ([[NSFileManager defaultManager] fileExistsAtPath:[paths objectAtIndex:i]])
-			[self removeCrashLog:[paths objectAtIndex:i]];
+-(void)windowWillClose:(NSNotification *)notification {
+    [self updateIgnoreCrashes];
+    
+    NSUInteger i = 0;
+	for (i = 0; i < [mPaths count]; i++) {
+        if ([[NSFileManager defaultManager] fileExistsAtPath:mPaths[i]]) {
+			[self removeCrashLog:mPaths[i]];
+        }
 	}
 }
 
-#pragma mark send
+#pragma mark - IBAction methods
+-(IBAction)submitData:(id)sender {
+    NSInteger i = 0;
+    BOOL failures = NO;
+    NSInteger max = MIN([CMCrashReporterGlobal numberOfMaximumReports],[mPaths count]);
+    
+    if (max==0) {
+        max=[mPaths count];
+    }
+    
+    for (i=0;i<max;i++) {
+        if ([self submitFile:mPaths[i]]) {
+            // report succeed
+            // File will be removed on close
+        } else
+            failures = YES;
+    }
+    
+    NSAlert *alert = [[[NSAlert alloc] init] autorelease];
+    [alert addButtonWithTitle:@"OK"];
+    [alert setMessageText:[CMCrashReporterGlobal appName]];
+    [alert setAlertStyle:NSInformationalAlertStyle];
+    
+    if (!failures) {
+        [alert setInformativeText:[NSString stringWithFormat:@"Thanks for helping us improve %@",[CMCrashReporterGlobal appName]]];
+    } else {
+        [alert setInformativeText:[NSString stringWithFormat:@"%@ was unable to send the crashlog.",[CMCrashReporterGlobal appName]]];
+    }
+    [alert runModal];
+    [self.window close];
+}
 
--(BOOL)submitFile:(NSString *)file
-{
+-(IBAction)dontReport:(id)sender {
+    [self.window close];
+}
+
+#pragma mark - Send crash reports
+-(BOOL)submitFile:(NSString *)file {
 	NSMutableDictionary* post_dict = [[NSMutableDictionary alloc] init];
 
-	[post_dict setValue:@"CMCrashReporter" forKey:@"type"];
-	[post_dict setValue:[CMCrashReporterGlobal appName] forKey:@"application"];
-	[post_dict setValue:[CMCrashReporterGlobal appVersion] forKey:@"appVersion"];
-	[post_dict setValue:[CMCrashReporterGlobal osVersion] forKey:@"osVersion"];
-	[post_dict setValue:[NSString stringWithString:[mailaddress stringValue]] forKey:@"mailaddress"];
-	[post_dict setValue:[NSString stringWithString:[[commentField textStorage] string]] forKey:@"comments"];
-	[post_dict setValue: [[[[NSDateFormatter alloc] initWithDateFormat:@"%H:%M:%S" allowNaturalLanguage:NO] autorelease] stringFromDate:[NSDate date]] forKey:@"time"];
-	[post_dict setValue: [[[[NSDateFormatter alloc] initWithDateFormat:@"%m/%d/%Y" allowNaturalLanguage:NO] autorelease] stringFromDate:[NSDate date]] forKey:@"date"];
+    post_dict[@"type"]=@"CMCrashReporter";
+    post_dict[@"application"]=[CMCrashReporterGlobal appName];
+    post_dict[@"appVersion"]=[CMCrashReporterGlobal appVersion];
+    post_dict[@"osVersion"]=[CMCrashReporterGlobal osVersion];
+    post_dict[@"mailaddress"]=[mailaddress stringValue];
+    post_dict[@"comments"]=[[commentField textStorage] string];
+    post_dict[@"time"]=[[[[NSDateFormatter alloc] initWithDateFormat:@"%H:%M:%S" allowNaturalLanguage:NO] autorelease] stringFromDate:[NSDate date]];
+    post_dict[@"date"]=[[[[NSDateFormatter alloc] initWithDateFormat:@"%m/%d/%Y" allowNaturalLanguage:NO] autorelease] stringFromDate:[NSDate date]];
 	
     if ([includeRapport state]) {
-//        NSLog(@"File %@ contents %@", file, [NSString stringWithContentsOfFile:file encoding:NSUTF8StringEncoding error:nil]);
-		[post_dict setValue:[NSString stringWithContentsOfFile:file encoding:NSUTF8StringEncoding error:nil] forKey:@"rapport"];
+        post_dict[@"rapport"]=[NSString stringWithContentsOfFile:file encoding:NSUTF8StringEncoding error:nil];
+    } else {
+        post_dict[@"rapport"]=@"not included";
     }
-	else
-		[post_dict setValue:@"not included" forKey:@"rapport"];
 	
 	NSData* regData = [self generateFormData:post_dict];
 	[post_dict release];
@@ -154,40 +151,32 @@
     return ([compare isEqualToString:@"ok"]);
 }
 
-#pragma mark Generate form data
-
-- (NSData*)generateFormData:(NSDictionary*)dict
-{
+#pragma mark - Generate form data
+-(NSData*)generateFormData:(NSDictionary*)dict {
 	NSString* boundary = @"_insert_some_boundary_here_";
 	NSArray* keys = [dict allKeys];
 	NSMutableData* result = [[NSMutableData alloc] initWithCapacity:100];
 
-        unsigned int i;
-	for (i = 0; i < [keys count]; i++) 
+    NSUInteger i;
+	for (i=0;i<[keys count];i++)
 	{
-		id value = [dict valueForKey: [keys objectAtIndex: i]];
+		id value = [dict valueForKey:keys[i]];
 		[result appendData:[[NSString stringWithFormat:@"--%@\n", boundary] dataUsingEncoding:NSASCIIStringEncoding]];
 
-		if ([value isKindOfClass:[NSString class]])
-		{
-			[result appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\n\n", [keys objectAtIndex:i]] dataUsingEncoding:NSASCIIStringEncoding]];
+		if ([value isKindOfClass:[NSString class]]) {
+			[result appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\n\n", keys[i]] dataUsingEncoding:NSASCIIStringEncoding]];
 			[result appendData:[[NSString stringWithFormat:@"%@",value] dataUsingEncoding:NSASCIIStringEncoding]];
-		}
-		else if ([value isKindOfClass:[NSURL class]])
-		{
-			[result appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"; filename=\"%@\"\n", [keys objectAtIndex:i], [[value path] lastPathComponent]] dataUsingEncoding:NSASCIIStringEncoding]];
+		} else if ([value isKindOfClass:[NSURL class]]) {
+			[result appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"; filename=\"%@\"\n", keys[i], [[value path] lastPathComponent]] dataUsingEncoding:NSASCIIStringEncoding]];
 			[result appendData:[@"Content-Type: application/octet-stream\n\n" dataUsingEncoding:NSASCIIStringEncoding]];
 			[result appendData:[NSData dataWithContentsOfFile:[value path]]];
-		}
-		else
-		{
-			NSLog(@"No string or NSURL for key %@ = %@ of type %@", [keys objectAtIndex:i], [dict valueForKey: [keys objectAtIndex: i]], [[dict valueForKey: [keys objectAtIndex: i]] className]);
+		} else {
+			NSLog(@"No string or NSURL for key %@ = %@ of type %@", keys[i], [dict valueForKey: keys[i]], [[dict valueForKey: keys[i]] className]);
 		}
 		
 		[result appendData:[@"\n" dataUsingEncoding:NSASCIIStringEncoding]];
 	}
 	[result appendData:[[NSString stringWithFormat:@"--%@--\n", boundary] dataUsingEncoding:NSASCIIStringEncoding]];
-	
 	return [result autorelease];
 }
 @end

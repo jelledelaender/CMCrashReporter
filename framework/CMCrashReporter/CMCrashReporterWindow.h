@@ -12,7 +12,7 @@
 
 
 @interface CMCrashReporterWindow : NSWindowController {
-	NSArray *paths;
+	NSArray *mPaths;
 	
 	IBOutlet id description;
 	IBOutlet id mailaddress;
@@ -23,23 +23,20 @@
 	IBOutlet id version;
 }
 
-+ (void)runCrashReporterWithPaths:(NSArray *)ar;
++(void)runCrashReporterWithPaths:(NSArray*)paths;
 
-- (id)init;
+-(instancetype)init;
 
-- (NSArray *)paths;
-- (void)setPaths:(NSArray *)ar;
+@property (nonatomic, copy) NSArray *paths;
 
-- (void)windowDidLoad;
-- (void)windowWillClose:(NSNotification *)notification;
+-(void)windowDidLoad;
+-(void)windowWillClose:(NSNotification*)notification;
 
-- (BOOL)submitFile:(NSString *)file;
-- (IBAction)submitData:(id)sender;
-- (IBAction)dontReport:(id)sender;
+-(BOOL)submitFile:(NSString*)file;
+-(IBAction)submitData:(id)sender;
+-(IBAction)dontReport:(id)sender;
 
-- (void)close;
-
-- (void)removeCrashLog:(NSString *)path;
-- (NSData*)generateFormData:(NSDictionary*)dict;
+-(void)removeCrashLog:(NSString*)path;
+-(NSData*)generateFormData:(NSDictionary*)dict;
 
 @end

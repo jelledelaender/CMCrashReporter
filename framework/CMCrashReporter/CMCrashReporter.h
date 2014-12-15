@@ -10,12 +10,10 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "CMCrashReporterGlobal.h"
-#import "CMCrashReporterWindow.h"
 
 @interface CMCrashReporter : NSObject {
-
 }
-+ (void)check;
-+ (NSArray *)getReports;
+
++(void)check;
++(NSArray*)getReports;
 @end

@@ -9,9 +9,9 @@
 /* Begin PBXBuildFile section */
 		32693F6D1A3DB05000ABA221 /* CMCrashReporter.h in Headers */ = {isa = PBXBuildFile; fileRef = 32693F641A3DB05000ABA221 /* CMCrashReporter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		32693F6E1A3DB05000ABA221 /* CMCrashReporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 32693F651A3DB05000ABA221 /* CMCrashReporter.m */; };
-		32693F701A3DB05000ABA221 /* CMCrashReporterGlobal.h in Headers */ = {isa = PBXBuildFile; fileRef = 32693F671A3DB05000ABA221 /* CMCrashReporterGlobal.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		32693F701A3DB05000ABA221 /* CMCrashReporterGlobal.h in Headers */ = {isa = PBXBuildFile; fileRef = 32693F671A3DB05000ABA221 /* CMCrashReporterGlobal.h */; };
 		32693F711A3DB05000ABA221 /* CMCrashReporterGlobal.m in Sources */ = {isa = PBXBuildFile; fileRef = 32693F681A3DB05000ABA221 /* CMCrashReporterGlobal.m */; };
-		32693F721A3DB05000ABA221 /* CMCrashReporterWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = 32693F691A3DB05000ABA221 /* CMCrashReporterWindow.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		32693F721A3DB05000ABA221 /* CMCrashReporterWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = 32693F691A3DB05000ABA221 /* CMCrashReporterWindow.h */; };
 		32693F731A3DB05000ABA221 /* CMCrashReporterWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 32693F6A1A3DB05000ABA221 /* CMCrashReporterWindow.m */; };
 		32693F741A3DB05000ABA221 /* CMCrashReporterWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32693F6B1A3DB05000ABA221 /* CMCrashReporterWindow.xib */; };
 /* End PBXBuildFile section */
@@ -21,7 +21,6 @@
 		32693F4C1A3DB00C00ABA221 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		32693F641A3DB05000ABA221 /* CMCrashReporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMCrashReporter.h; sourceTree = "<group>"; };
 		32693F651A3DB05000ABA221 /* CMCrashReporter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMCrashReporter.m; sourceTree = "<group>"; };
-		32693F661A3DB05000ABA221 /* CMCrashReporter.tmproj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = CMCrashReporter.tmproj; sourceTree = "<group>"; };
 		32693F671A3DB05000ABA221 /* CMCrashReporterGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMCrashReporterGlobal.h; sourceTree = "<group>"; };
 		32693F681A3DB05000ABA221 /* CMCrashReporterGlobal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMCrashReporterGlobal.m; sourceTree = "<group>"; };
 		32693F691A3DB05000ABA221 /* CMCrashReporterWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMCrashReporterWindow.h; sourceTree = "<group>"; };
@@ -62,7 +61,6 @@
 			children = (
 				32693F641A3DB05000ABA221 /* CMCrashReporter.h */,
 				32693F651A3DB05000ABA221 /* CMCrashReporter.m */,
-				32693F661A3DB05000ABA221 /* CMCrashReporter.tmproj */,
 				32693F671A3DB05000ABA221 /* CMCrashReporterGlobal.h */,
 				32693F681A3DB05000ABA221 /* CMCrashReporterGlobal.m */,
 				32693F691A3DB05000ABA221 /* CMCrashReporterWindow.h */,

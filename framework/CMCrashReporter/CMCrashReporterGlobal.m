@@ -18,128 +18,131 @@ NSString* mCrashReportEmail = nil;
 NSString* mCrashReportEmailSubject = nil;
 NSString* mCrashReportURL = nil;
 
-
 @implementation CMCrashReporterGlobal
 
-
-- (void)dealloc {
-    if (mAppName != nil)
+-(void)dealloc {
+    if (mAppName) {
         [mAppName release];
-    if (mAppUiName != nil)
+    }
+    if (mAppUiName) {
         [mAppUiName release];
-    if (mAppVersion != nil)
+    }
+    if (mAppVersion) {
         [mAppVersion release];
-    if (mCrashReportEmail != nil)
+    }
+    if (mCrashReportEmail) {
         [mCrashReportEmail release];
-    if (mCrashReportEmailSubject != nil)
+    }
+    if (mCrashReportEmailSubject) {
         [mCrashReportEmailSubject release];
-    if (mCrashReportURL != nil)
+    }
+    if (mCrashReportURL) {
         [mCrashReportURL release];
+    }
 
     [super dealloc];
 }
 
 
-+ (NSString *)appName
-{
-    if (mAppName != NULL)
++(NSString*)appName {
+    if (mAppName != NULL) {
         return mAppName;
-    else
-	return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleName"];
+    } else {
+        return [[NSBundle mainBundle] infoDictionary][@"CFBundleName"];
+    }
 }
 
-+ (NSString *)appUiName
-{
-    if (mAppUiName != NULL)
++(NSString*)appUiName {
+    if (mAppUiName != NULL) {
         return mAppUiName;
-    else
-        return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleName"];
+    } else {
+        return [[NSBundle mainBundle] infoDictionary][@"CFBundleName"];
+    }
 }
 
-+ (NSString *)appVersion
-{
-    if (mAppVersion != NULL)
++(NSString *)appVersion {
+    if (mAppVersion != NULL) {
         return mAppVersion;
-    else
-        return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
+    } else {
+        return [[NSBundle mainBundle] infoDictionary][@"CFBundleVersion"];
+    }
 }
 
-+ (int)numberOfMaximumReports {
-	if (! [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CMMaxReports"]) return 0;
-	
-	return [[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CMMaxReports"] intValue];
++(int)numberOfMaximumReports {
+    if ([[NSBundle mainBundle] infoDictionary][@"CMMaxReports"]) {
+        return [[[NSBundle mainBundle] infoDictionary][@"CMMaxReports"] intValue];
+    } else {
+        return 0;
+    }
 }
 
-+ (BOOL)isRunningLeopard
-{
-	SInt32 MacVersion;
-	Gestalt(gestaltSystemVersion, &MacVersion);
-	return MacVersion >= 4176;
-}
-
-+ (BOOL)checkOnCrashes
-{
-	// Integration for later
++(BOOL)checkOnCrashes {
 	return YES;
 }
 
-+ (NSString *)crashReportURL
-{
++(NSString*)crashReportURL {
     NSString *value;
-    if (mCrashReportURL != NULL)
+    if (mCrashReportURL) {
         value = mCrashReportURL;
-    else
-        value = [[[NSBundle mainBundle] infoDictionary]
-			objectForKey:@"CMSubmitURL"];
-    if (!value) NSLog(@"Warning: No CMSubmitURL - key available for CMCrashReporter. Please add this key at your info.plist file.");
+    } else {
+        value = [[NSBundle mainBundle] infoDictionary][@"CMSubmitURL"];
+    }
+    if (!value) {
+        NSLog(@"Warning: No CMSubmitURL - key available for CMCrashReporter. Please add this key at your info.plist file.");
+    }
     return value;
 }
 
-+ (NSString *)crashReportEmail
-{
++(NSString*)crashReportEmail {
     NSString *email;
-    if (mCrashReportURL != NULL)
+    if (mCrashReportURL != NULL) {
         email = mCrashReportEmail;
-    else
-    {
+    } else {
         ABMultiValue *emails = [[[ABAddressBook sharedAddressBook] me] valueForProperty: kABEmailProperty];
         email = (NSString *) [emails valueAtIndex: [emails indexForIdentifier: [emails primaryIdentifier]]];
-     }
+    }
 
     return email;
 }
 
-+ (NSString *)osVersion
-{
-	return [[NSDictionary dictionaryWithContentsOfFile:@"/System/Library/CoreServices/SystemVersion.plist"]
-			objectForKey:@"ProductVersion"];
++(NSString *)osVersion {
+	return [NSDictionary dictionaryWithContentsOfFile:@"/System/Library/CoreServices/SystemVersion.plist"][@"ProductVersion"];
 }
 
-+ (void)setAppName:(NSString *)name
-{
-    mAppName = name;
++(void)setAppName:(NSString *)name {
+    if (mAppName!=name) {
+        [mAppName autorelease];
+        mAppName = [name retain];
+    }
 }
 
-+ (void)setAppUiName:(NSString *)name
-{
-    mAppUiName = name;
++(void)setAppUiName:(NSString *)name {
+    if (mAppUiName!=name) {
+        [mAppUiName autorelease];
+        mAppUiName = [name retain];
+    }
 }
 
-+ (void)setAppVersion:(NSString *)version
-{
-    mAppVersion = version;
++(void)setAppVersion:(NSString *)version {
+    if (mAppVersion!=version) {
+        [mAppVersion autorelease];
+        mAppVersion = [version retain];
+    }
 }
 
-+ (void)setCrashReportEmail:(NSString *)emailTo
-{
-    mCrashReportEmail = emailTo;
++(void)setCrashReportEmail:(NSString *)emailTo {
+    if (mCrashReportEmail!=emailTo) {
+        [mCrashReportEmail autorelease];
+        mCrashReportEmail = [emailTo retain];
+    }
 }
 
-+ (void)setCrashReportURL:(NSString *)reportServerUrl
-{
-    mCrashReportURL = reportServerUrl;
++(void)setCrashReportURL:(NSString *)reportServerUrl {
+    if (mCrashReportURL!=reportServerUrl) {
+        [mCrashReportURL autorelease];
+        mCrashReportURL = [reportServerUrl retain];
+    }
 }
-
 
 @end
 
