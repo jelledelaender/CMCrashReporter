@@ -10,6 +10,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "CMCrashReporterGlobal.h"
 
 @interface CMCrashReporter : NSObject {
 }

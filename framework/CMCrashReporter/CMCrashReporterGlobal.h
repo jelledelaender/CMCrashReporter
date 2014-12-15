@@ -14,27 +14,11 @@
 @interface CMCrashReporterGlobal : NSObject {
 }
 
-+(NSString *)appName;
-+(NSString *)appUiName;
-+(NSString *)appVersion;
-
-+(BOOL)checkOnCrashes;
-
-+(NSString *)crashReportEmail;
-+(NSString *)crashReportURL;
-+(NSString *)osVersion;
-
-+(int)numberOfMaximumReports;
-
-+(BOOL)technicalDetailsAreOptional;
-+(BOOL)getSystemVersionMajor:(unsigned *)major
-                       minor:(unsigned *)minor
-                      bugFix:(unsigned *)bugFix;
-
 +(void)setAppName:(NSString *)name;
 +(void)setAppUiName:(NSString *)name;
 +(void)setAppVersion:(NSString *)version;
 +(void)setCrashReportEmail:(NSString *)emailTo;
 +(void)setCrashReportURL:(NSString *)reportServerUrl;
++(BOOL)technicalDetailsAreOptional;
 
 @end

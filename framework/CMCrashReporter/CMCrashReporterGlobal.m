@@ -8,6 +8,7 @@
 //
 
 #import "CMCrashReporterGlobal.h"
+#import "CMCrashReporterGlobal+private.h"
 #import <AddressBook/AddressBook.h>
 
 
@@ -39,6 +40,9 @@ NSNumber *mTechnicalDetailsAreOptional;
     }
     if (mCrashReportURL) {
         [mCrashReportURL release];
+    }
+    if (mTechnicalDetailsAreOptional) {
+        [mTechnicalDetailsAreOptional release];
     }
 
     [super dealloc];

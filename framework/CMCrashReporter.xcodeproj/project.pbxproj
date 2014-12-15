@@ -9,11 +9,12 @@
 /* Begin PBXBuildFile section */
 		32693F6D1A3DB05000ABA221 /* CMCrashReporter.h in Headers */ = {isa = PBXBuildFile; fileRef = 32693F641A3DB05000ABA221 /* CMCrashReporter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		32693F6E1A3DB05000ABA221 /* CMCrashReporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 32693F651A3DB05000ABA221 /* CMCrashReporter.m */; };
-		32693F701A3DB05000ABA221 /* CMCrashReporterGlobal.h in Headers */ = {isa = PBXBuildFile; fileRef = 32693F671A3DB05000ABA221 /* CMCrashReporterGlobal.h */; };
+		32693F701A3DB05000ABA221 /* CMCrashReporterGlobal.h in Headers */ = {isa = PBXBuildFile; fileRef = 32693F671A3DB05000ABA221 /* CMCrashReporterGlobal.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		32693F711A3DB05000ABA221 /* CMCrashReporterGlobal.m in Sources */ = {isa = PBXBuildFile; fileRef = 32693F681A3DB05000ABA221 /* CMCrashReporterGlobal.m */; };
 		32693F721A3DB05000ABA221 /* CMCrashReporterWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = 32693F691A3DB05000ABA221 /* CMCrashReporterWindow.h */; };
 		32693F731A3DB05000ABA221 /* CMCrashReporterWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 32693F6A1A3DB05000ABA221 /* CMCrashReporterWindow.m */; };
 		32693F741A3DB05000ABA221 /* CMCrashReporterWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32693F6B1A3DB05000ABA221 /* CMCrashReporterWindow.xib */; };
+		32693F7B1A3F6E3600ABA221 /* CMCrashReporterGlobal+private.h in Headers */ = {isa = PBXBuildFile; fileRef = 32693F791A3F6E3600ABA221 /* CMCrashReporterGlobal+private.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		32693F691A3DB05000ABA221 /* CMCrashReporterWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMCrashReporterWindow.h; sourceTree = "<group>"; };
 		32693F6A1A3DB05000ABA221 /* CMCrashReporterWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMCrashReporterWindow.m; sourceTree = "<group>"; };
 		32693F6B1A3DB05000ABA221 /* CMCrashReporterWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CMCrashReporterWindow.xib; sourceTree = "<group>"; };
+		32693F791A3F6E3600ABA221 /* CMCrashReporterGlobal+private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CMCrashReporterGlobal+private.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 				32693F651A3DB05000ABA221 /* CMCrashReporter.m */,
 				32693F671A3DB05000ABA221 /* CMCrashReporterGlobal.h */,
 				32693F681A3DB05000ABA221 /* CMCrashReporterGlobal.m */,
+				32693F791A3F6E3600ABA221 /* CMCrashReporterGlobal+private.h */,
 				32693F691A3DB05000ABA221 /* CMCrashReporterWindow.h */,
 				32693F6A1A3DB05000ABA221 /* CMCrashReporterWindow.m */,
 				32693F6B1A3DB05000ABA221 /* CMCrashReporterWindow.xib */,
@@ -85,8 +88,9 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				32693F6D1A3DB05000ABA221 /* CMCrashReporter.h in Headers */,
+				32693F7B1A3F6E3600ABA221 /* CMCrashReporterGlobal+private.h in Headers */,
 				32693F701A3DB05000ABA221 /* CMCrashReporterGlobal.h in Headers */,
+				32693F6D1A3DB05000ABA221 /* CMCrashReporter.h in Headers */,
 				32693F721A3DB05000ABA221 /* CMCrashReporterWindow.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

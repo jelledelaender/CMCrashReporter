@@ -8,8 +8,6 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "CMCrashReporterGlobal.h"
-
 
 @interface CMCrashReporterWindow : NSWindowController {
 	NSArray *mPaths;

@@ -8,6 +8,8 @@
 //
 
 #import "CMCrashReporterWindow.h"
+#import "CMCrashReporterGlobal.h"
+#import "CMCrashReporterGlobal+private.h"
 
 static CMCrashReporterWindow *windowController;
 
