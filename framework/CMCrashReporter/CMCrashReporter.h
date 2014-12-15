@@ -15,5 +15,4 @@
 }
 
 +(void)check;
-+(NSArray*)getReports;
 @end

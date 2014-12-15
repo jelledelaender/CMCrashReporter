@@ -11,6 +11,10 @@
 #import "CMCrashReporterWindow.h"
 #import "CMCrashReporterGlobal.h"
 
+@interface CMCrashReporter()
++(NSArray*)getReports;
+@end
+
 @implementation CMCrashReporter
 
 +(void)check {

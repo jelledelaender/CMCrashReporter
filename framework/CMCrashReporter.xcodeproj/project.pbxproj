@@ -26,7 +26,6 @@
 		32693F691A3DB05000ABA221 /* CMCrashReporterWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMCrashReporterWindow.h; sourceTree = "<group>"; };
 		32693F6A1A3DB05000ABA221 /* CMCrashReporterWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMCrashReporterWindow.m; sourceTree = "<group>"; };
 		32693F6B1A3DB05000ABA221 /* CMCrashReporterWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CMCrashReporterWindow.xib; sourceTree = "<group>"; };
-		32693F6C1A3DB05000ABA221 /* read-me.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "read-me.txt"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,7 +65,6 @@
 				32693F691A3DB05000ABA221 /* CMCrashReporterWindow.h */,
 				32693F6A1A3DB05000ABA221 /* CMCrashReporterWindow.m */,
 				32693F6B1A3DB05000ABA221 /* CMCrashReporterWindow.xib */,
-				32693F6C1A3DB05000ABA221 /* read-me.txt */,
 				32693F4B1A3DB00C00ABA221 /* Supporting Files */,
 			);
 			path = CMCrashReporter;
