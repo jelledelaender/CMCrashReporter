@@ -24,25 +24,25 @@
 
 +(NSArray *)getReports
 {
-	NSFileManager *fileManager = [NSFileManager defaultManager];
-	
-	if ([CMCrashReporterGlobal isRunningLeopard]) {
-		// (Snow) Leopard format is AppName_Year_Month_Day
+//	NSFileManager *fileManager = [NSFileManager defaultManager];
+//	
+//	if ([CMCrashReporterGlobal isRunningLeopard]) {
+//		// (Snow) Leopard format is AppName_Year_Month_Day
 		NSString *file;
-		NSString *path = [@"~/Library/Logs/CrashReporter/" stringByExpandingTildeInPath];
+		NSString *path = [@"~/Library/Logs/DiagnosticReports/" stringByExpandingTildeInPath];
 		NSDirectoryEnumerator *dirEnum = [[NSFileManager defaultManager] enumeratorAtPath:path];
 
 		NSMutableArray *array = [NSMutableArray array];
 		while (file = [dirEnum nextObject])
                         if ([file hasPrefix:[CMCrashReporterGlobal appName]])
-				[array addObject:[[NSString stringWithFormat:@"~/Library/Logs/CrashReporter/%@",file] stringByExpandingTildeInPath]];
+				[array addObject:[[NSString stringWithFormat:@"%@/%@",path,file] stringByExpandingTildeInPath]];
 		
 		return array;
-	} else {
-		// Tiger Formet is AppName.crash.log
-		NSString *path = [[NSString stringWithFormat:@"~/Library/Logs/CrashReporter/%@.crash.log",[CMCrashReporterGlobal appName]] stringByExpandingTildeInPath];
-		if ([fileManager fileExistsAtPath:path]) return [NSArray arrayWithObject:path];
-		else return nil;
-	}
+//	} else {
+//		// Tiger Formet is AppName.crash.log
+//		NSString *path = [[NSString stringWithFormat:@"~/Library/Logs/CrashReporter/%@.crash.log",[CMCrashReporterGlobal appName]] stringByExpandingTildeInPath];
+//		if ([fileManager fileExistsAtPath:path]) return [NSArray arrayWithObject:path];
+//		else return nil;
+//	}
 }
 @end

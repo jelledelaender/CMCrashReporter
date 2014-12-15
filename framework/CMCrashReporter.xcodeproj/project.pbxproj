@@ -1,0 +1,319 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		32693F6D1A3DB05000ABA221 /* CMCrashReporter.h in Headers */ = {isa = PBXBuildFile; fileRef = 32693F641A3DB05000ABA221 /* CMCrashReporter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		32693F6E1A3DB05000ABA221 /* CMCrashReporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 32693F651A3DB05000ABA221 /* CMCrashReporter.m */; };
+		32693F701A3DB05000ABA221 /* CMCrashReporterGlobal.h in Headers */ = {isa = PBXBuildFile; fileRef = 32693F671A3DB05000ABA221 /* CMCrashReporterGlobal.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		32693F711A3DB05000ABA221 /* CMCrashReporterGlobal.m in Sources */ = {isa = PBXBuildFile; fileRef = 32693F681A3DB05000ABA221 /* CMCrashReporterGlobal.m */; };
+		32693F721A3DB05000ABA221 /* CMCrashReporterWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = 32693F691A3DB05000ABA221 /* CMCrashReporterWindow.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		32693F731A3DB05000ABA221 /* CMCrashReporterWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 32693F6A1A3DB05000ABA221 /* CMCrashReporterWindow.m */; };
+		32693F741A3DB05000ABA221 /* CMCrashReporterWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32693F6B1A3DB05000ABA221 /* CMCrashReporterWindow.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		32693F481A3DB00C00ABA221 /* CMCrashReporter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CMCrashReporter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		32693F4C1A3DB00C00ABA221 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		32693F641A3DB05000ABA221 /* CMCrashReporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMCrashReporter.h; sourceTree = "<group>"; };
+		32693F651A3DB05000ABA221 /* CMCrashReporter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMCrashReporter.m; sourceTree = "<group>"; };
+		32693F661A3DB05000ABA221 /* CMCrashReporter.tmproj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = CMCrashReporter.tmproj; sourceTree = "<group>"; };
+		32693F671A3DB05000ABA221 /* CMCrashReporterGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMCrashReporterGlobal.h; sourceTree = "<group>"; };
+		32693F681A3DB05000ABA221 /* CMCrashReporterGlobal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMCrashReporterGlobal.m; sourceTree = "<group>"; };
+		32693F691A3DB05000ABA221 /* CMCrashReporterWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMCrashReporterWindow.h; sourceTree = "<group>"; };
+		32693F6A1A3DB05000ABA221 /* CMCrashReporterWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMCrashReporterWindow.m; sourceTree = "<group>"; };
+		32693F6B1A3DB05000ABA221 /* CMCrashReporterWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CMCrashReporterWindow.xib; sourceTree = "<group>"; };
+		32693F6C1A3DB05000ABA221 /* read-me.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "read-me.txt"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		32693F441A3DB00C00ABA221 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		32693F3E1A3DB00C00ABA221 = {
+			isa = PBXGroup;
+			children = (
+				32693F4A1A3DB00C00ABA221 /* CMCrashReporter */,
+				32693F491A3DB00C00ABA221 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		32693F491A3DB00C00ABA221 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				32693F481A3DB00C00ABA221 /* CMCrashReporter.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		32693F4A1A3DB00C00ABA221 /* CMCrashReporter */ = {
+			isa = PBXGroup;
+			children = (
+				32693F641A3DB05000ABA221 /* CMCrashReporter.h */,
+				32693F651A3DB05000ABA221 /* CMCrashReporter.m */,
+				32693F661A3DB05000ABA221 /* CMCrashReporter.tmproj */,
+				32693F671A3DB05000ABA221 /* CMCrashReporterGlobal.h */,
+				32693F681A3DB05000ABA221 /* CMCrashReporterGlobal.m */,
+				32693F691A3DB05000ABA221 /* CMCrashReporterWindow.h */,
+				32693F6A1A3DB05000ABA221 /* CMCrashReporterWindow.m */,
+				32693F6B1A3DB05000ABA221 /* CMCrashReporterWindow.xib */,
+				32693F6C1A3DB05000ABA221 /* read-me.txt */,
+				32693F4B1A3DB00C00ABA221 /* Supporting Files */,
+			);
+			path = CMCrashReporter;
+			sourceTree = "<group>";
+		};
+		32693F4B1A3DB00C00ABA221 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				32693F4C1A3DB00C00ABA221 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		32693F451A3DB00C00ABA221 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				32693F6D1A3DB05000ABA221 /* CMCrashReporter.h in Headers */,
+				32693F701A3DB05000ABA221 /* CMCrashReporterGlobal.h in Headers */,
+				32693F721A3DB05000ABA221 /* CMCrashReporterWindow.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		32693F471A3DB00C00ABA221 /* CMCrashReporter */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 32693F5E1A3DB00C00ABA221 /* Build configuration list for PBXNativeTarget "CMCrashReporter" */;
+			buildPhases = (
+				32693F431A3DB00C00ABA221 /* Sources */,
+				32693F441A3DB00C00ABA221 /* Frameworks */,
+				32693F451A3DB00C00ABA221 /* Headers */,
+				32693F461A3DB00C00ABA221 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CMCrashReporter;
+			productName = CMCrashReporter;
+			productReference = 32693F481A3DB00C00ABA221 /* CMCrashReporter.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		32693F3F1A3DB00C00ABA221 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = VortexApps;
+				TargetAttributes = {
+					32693F471A3DB00C00ABA221 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+				};
+			};
+			buildConfigurationList = 32693F421A3DB00C00ABA221 /* Build configuration list for PBXProject "CMCrashReporter" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 32693F3E1A3DB00C00ABA221;
+			productRefGroup = 32693F491A3DB00C00ABA221 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				32693F471A3DB00C00ABA221 /* CMCrashReporter */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		32693F461A3DB00C00ABA221 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				32693F741A3DB05000ABA221 /* CMCrashReporterWindow.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		32693F431A3DB00C00ABA221 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				32693F6E1A3DB05000ABA221 /* CMCrashReporter.m in Sources */,
+				32693F711A3DB05000ABA221 /* CMCrashReporterGlobal.m in Sources */,
+				32693F731A3DB05000ABA221 /* CMCrashReporterWindow.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		32693F5C1A3DB00C00ABA221 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		32693F5D1A3DB00C00ABA221 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		32693F5F1A3DB00C00ABA221 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = NO;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@executable_path/../Frameworks";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = CMCrashReporter/Info.plist;
+				LD_DYLIB_INSTALL_NAME = "$(DYLIB_INSTALL_NAME_BASE:standardizepath)/$(EXECUTABLE_PATH)";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				VALID_ARCHS = x86_64;
+			};
+			name = Debug;
+		};
+		32693F601A3DB00C00ABA221 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = NO;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@executable_path/../Frameworks";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = CMCrashReporter/Info.plist;
+				LD_DYLIB_INSTALL_NAME = "$(DYLIB_INSTALL_NAME_BASE:standardizepath)/$(EXECUTABLE_PATH)";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				VALID_ARCHS = x86_64;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		32693F421A3DB00C00ABA221 /* Build configuration list for PBXProject "CMCrashReporter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				32693F5C1A3DB00C00ABA221 /* Debug */,
+				32693F5D1A3DB00C00ABA221 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		32693F5E1A3DB00C00ABA221 /* Build configuration list for PBXNativeTarget "CMCrashReporter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				32693F5F1A3DB00C00ABA221 /* Debug */,
+				32693F601A3DB00C00ABA221 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 32693F3F1A3DB00C00ABA221 /* Project object */;
+}
