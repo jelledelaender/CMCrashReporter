@@ -277,7 +277,7 @@
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = NO;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEFINES_MODULE = YES;
+				DEFINES_MODULE = NO;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@executable_path/../Frameworks";
