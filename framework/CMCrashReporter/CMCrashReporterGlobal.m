@@ -189,7 +189,7 @@ NSNumber *mTechnicalDetailsAreOptional;
     }
 }
 
--(void)setTechnicalDetailsAreOptional:(BOOL)optional {
++(void)setTechnicalDetailsAreOptional:(BOOL)optional {
     if (!mTechnicalDetailsAreOptional || [mTechnicalDetailsAreOptional boolValue]!=optional) {
         [mTechnicalDetailsAreOptional autorelease];
         mTechnicalDetailsAreOptional = [NSNumber numberWithBool:optional];

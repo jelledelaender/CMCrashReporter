@@ -24,6 +24,6 @@
 
 +(BOOL)technicalDetailsAreOptional;
 +(BOOL)getSystemVersionMajor:(unsigned *)major
-minor:(unsigned *)minor
-bugFix:(unsigned *)bugFix;
+                        minor:(unsigned *)minor
+                        bugFix:(unsigned *)bugFix;
 @end

@@ -19,6 +19,6 @@
 +(void)setAppVersion:(NSString *)version;
 +(void)setCrashReportEmail:(NSString *)emailTo;
 +(void)setCrashReportURL:(NSString *)reportServerUrl;
-+(BOOL)technicalDetailsAreOptional;
++(void)setTechnicalDetailsAreOptional:(BOOL)optional;
 
 @end
