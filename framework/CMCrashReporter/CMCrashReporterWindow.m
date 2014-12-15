@@ -57,8 +57,11 @@ static CMCrashReporterWindow *windowController;
 
 #pragma mark - NSWindow callbacks
 - (void)windowDidLoad {
-    [includeRapport setState:1];
-    [includeRapport setHidden:YES];
+    
+    if (![CMCrashReporterGlobal technicalDetailsAreOptional]) {
+        [includeRapport setState:1];
+        [includeRapport setHidden:YES];
+    }
     
     [[self window] setTitle:[NSString stringWithFormat:@"%@ - %@ (%@) ",@"CrashReport", [CMCrashReporterGlobal appUiName], [CMCrashReporterGlobal appVersion]]];
     

@@ -26,6 +26,11 @@
 
 +(int)numberOfMaximumReports;
 
++(BOOL)technicalDetailsAreOptional;
++(BOOL)getSystemVersionMajor:(unsigned *)major
+                       minor:(unsigned *)minor
+                      bugFix:(unsigned *)bugFix;
+
 +(void)setAppName:(NSString *)name;
 +(void)setAppUiName:(NSString *)name;
 +(void)setAppVersion:(NSString *)version;

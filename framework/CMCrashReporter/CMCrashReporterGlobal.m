@@ -11,12 +11,13 @@
 #import <AddressBook/AddressBook.h>
 
 
-NSString* mAppName = nil;
-NSString* mAppUiName = nil;
-NSString* mAppVersion = nil;
-NSString* mCrashReportEmail = nil;
-NSString* mCrashReportEmailSubject = nil;
-NSString* mCrashReportURL = nil;
+NSString *mAppName = nil;
+NSString *mAppUiName = nil;
+NSString *mAppVersion = nil;
+NSString *mCrashReportEmail = nil;
+NSString *mCrashReportEmailSubject = nil;
+NSString *mCrashReportURL = nil;
+NSNumber *mTechnicalDetailsAreOptional;
 
 @implementation CMCrashReporterGlobal
 
@@ -106,7 +107,47 @@ NSString* mCrashReportURL = nil;
 }
 
 +(NSString *)osVersion {
-	return [NSDictionary dictionaryWithContentsOfFile:@"/System/Library/CoreServices/SystemVersion.plist"][@"ProductVersion"];
+    unsigned int major, minor, bugfix;
+    NSString *version;
+    
+    if ([self getSystemVersionMajor:&major
+                              minor:&minor
+                             bugFix:&bugfix]) {
+        version = [NSString stringWithFormat:@"%d.%d.%d", major, minor, bugfix];
+    } else {
+        version = @"Unknown";
+    }
+    return version;
+}
+
++(BOOL)technicalDetailsAreOptional {
+    BOOL value = YES;
+    if (mTechnicalDetailsAreOptional) {
+        value = [mTechnicalDetailsAreOptional boolValue];
+    } else if ([[NSBundle mainBundle] infoDictionary][@"CMTechnicalDetailsAreOptional"]) {
+        value = [((NSNumber*)[[NSBundle mainBundle] infoDictionary][@"CMTechnicalDetailsAreOptional"]) boolValue];
+    }
+    return value;
+}
+
++(BOOL)getSystemVersionMajor:(unsigned *)major
+                       minor:(unsigned *)minor
+                      bugFix:(unsigned *)bugFix
+{
+    SInt32 versionMajor, versionMinor, versionBugFix;
+    
+    if (Gestalt(gestaltSystemVersionMajor, &versionMajor) == noErr
+        && Gestalt(gestaltSystemVersionMinor, &versionMinor) == noErr
+        && Gestalt(gestaltSystemVersionBugFix, &versionBugFix) == noErr)
+    {
+        *major = versionMajor;
+        *minor = versionMinor;
+        *bugFix = versionBugFix;
+        
+        return YES;
+    } else {
+        return NO;
+    }
 }
 
 +(void)setAppName:(NSString *)name {
@@ -141,6 +182,13 @@ NSString* mCrashReportURL = nil;
     if (mCrashReportURL!=reportServerUrl) {
         [mCrashReportURL autorelease];
         mCrashReportURL = [reportServerUrl retain];
+    }
+}
+
+-(void)setTechnicalDetailsAreOptional:(BOOL)optional {
+    if (!mTechnicalDetailsAreOptional || [mTechnicalDetailsAreOptional boolValue]!=optional) {
+        [mTechnicalDetailsAreOptional autorelease];
+        mTechnicalDetailsAreOptional = [NSNumber numberWithBool:optional];
     }
 }
 
