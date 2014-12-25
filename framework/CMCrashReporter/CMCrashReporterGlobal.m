@@ -111,13 +111,13 @@ NSNumber *mTechnicalDetailsAreOptional;
 }
 
 +(NSString *)osVersion {
-    unsigned int major, minor, bugfix;
+    NSInteger major, minor, bugfix;
     NSString *version;
     
     if ([self getSystemVersionMajor:&major
                               minor:&minor
                              bugFix:&bugfix]) {
-        version = [NSString stringWithFormat:@"%d.%d.%d", major, minor, bugfix];
+        version = [NSString stringWithFormat:@"%ld.%ld.%ld", major, minor, bugfix];
     } else {
         version = @"Unknown";
     }
@@ -134,16 +134,22 @@ NSNumber *mTechnicalDetailsAreOptional;
     return value;
 }
 
-+(BOOL)getSystemVersionMajor:(unsigned *)major
-                       minor:(unsigned *)minor
-                      bugFix:(unsigned *)bugFix
++(BOOL)getSystemVersionMajor:(NSInteger *)major
+                       minor:(NSInteger *)minor
+                      bugFix:(NSInteger *)bugFix;
 {
     SInt32 versionMajor, versionMinor, versionBugFix;
     
-    if (Gestalt(gestaltSystemVersionMajor, &versionMajor) == noErr
-        && Gestalt(gestaltSystemVersionMinor, &versionMinor) == noErr
-        && Gestalt(gestaltSystemVersionBugFix, &versionBugFix) == noErr)
-    {
+    if ([[NSProcessInfo processInfo] respondsToSelector:@selector(operatingSystemVersion)]) {
+        NSOperatingSystemVersion version = [[NSProcessInfo processInfo] operatingSystemVersion];
+        *major = version.majorVersion;
+        *minor = version.minorVersion;
+        *bugFix = version.patchVersion;
+        
+        return YES;
+    } else if (Gestalt(gestaltSystemVersionMajor, &versionMajor) == noErr
+               && Gestalt(gestaltSystemVersionMinor, &versionMinor) == noErr
+               && Gestalt(gestaltSystemVersionBugFix, &versionBugFix) == noErr) {
         *major = versionMajor;
         *minor = versionMinor;
         *bugFix = versionBugFix;

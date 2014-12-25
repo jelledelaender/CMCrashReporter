@@ -23,7 +23,7 @@
 +(int)numberOfMaximumReports;
 
 +(BOOL)technicalDetailsAreOptional;
-+(BOOL)getSystemVersionMajor:(unsigned *)major
-                        minor:(unsigned *)minor
-                        bugFix:(unsigned *)bugFix;
++(BOOL)getSystemVersionMajor:(NSInteger *)major
+                        minor:(NSInteger *)minor
+                        bugFix:(NSInteger *)bugFix;
 @end
