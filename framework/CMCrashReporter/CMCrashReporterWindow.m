@@ -82,6 +82,8 @@ static CMCrashReporterWindow *windowController;
 			[self removeCrashLog:mPaths[i]];
         }
 	}
+    
+    [windowController autorelease];
 }
 
 #pragma mark - IBAction methods
