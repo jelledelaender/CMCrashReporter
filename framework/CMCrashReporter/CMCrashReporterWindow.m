@@ -84,6 +84,7 @@ static CMCrashReporterWindow *windowController;
 	}
     
     [windowController autorelease];
+    windowController = nil;
 }
 
 #pragma mark - IBAction methods
